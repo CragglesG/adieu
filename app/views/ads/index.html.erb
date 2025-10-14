@@ -1,9 +1,14 @@
-<h1>Ads</h1>
+<div>
+    <h1>Ads</h1>
+    <%= link_to "New ad", new_ad_path %>
 
-<div id="ads">
-  <% @ads.each do |ad| %>
-  <div>
-    <%= ad.name %>
-  </div>
-  <% end %>
+    <% cache @ad do %>
+        <div id="ads">
+            <% @ads.each do |ad| %>
+            <div>
+                <%= link_to ad.name, ad %>
+            </div>
+            <% end %>
+        </div>
+    <% end %>
 </div>

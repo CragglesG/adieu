@@ -1,0 +1,15 @@
+<%= form_with model: ad do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :selling_price %>
+    <%= form.number_field :selling_price, step: :any %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
