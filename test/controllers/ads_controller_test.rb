@@ -1,8 +1,8 @@
 require "test_helper"
 
-class HomeControllerTest < ActionDispatch::IntegrationTest
+class AdsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get root_url
+    get ads_index_url
     assert_response :success
   end
 end

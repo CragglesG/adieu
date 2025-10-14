@@ -23,47 +23,51 @@
   </head>
 
   <body>
-    <main class="container flex bg-[#fffffa]">
-      <nav class="relative top-0 left-0 right-0 w-full border-b-gray-500" data-controller="navbar">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 w-full">
-          <div class="relative flex h-16 items-center justify-between">
-            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              <button type="button" command="--toggle" commandfor="mobile-menu" data-action="click->navbar#toggleMenu" class="relative inline-flex items-center justify-center rounded-md p-2 dark:text-gray-400 dark:hover:text-white">
-                <span class="absolute -inset-0.5"></span>
-                <span class="sr-only">Open main menu</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-                  <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-                  <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
+    <nav class="relative top-0 left-0 right-0 w-full border-b-gray-500" data-controller="navbar">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 w-full">
+        <div class="relative flex h-16 items-center justify-between">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <button type="button" command="--toggle" commandfor="mobile-menu" data-action="click->navbar#toggleMenu" class="relative inline-flex items-center justify-center rounded-md p-2 dark:text-gray-400 dark:hover:text-white">
+              <span class="absolute -inset-0.5"></span>
+              <span class="sr-only">Open main menu</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
+                <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
+                <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-1 items-center">
+            <div class="flex shrink-0 items-center">
+              <%= link_to 'Adieu', root_path %>
             </div>
-            <div class="flex flex-1 items-center">
-              <div class="flex shrink-0 items-center">
-                <a href="/">Adieu</a>
-              </div>
-              <div class="hidden sm:ml-auto sm:block">
-                <div class="flex space-x-4">
-                  <a href="#" class="rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white">Site Owners</a>
-                  <a href="#" class="rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white">Advertisers</a>
-                  <a href="#" class="rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white">Consumers</a>
-                  <a href="#" class="rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white">Developers</a>
-                </div>
+            <div class="hidden sm:ml-auto sm:block">
+              <div class="flex space-x-4">
+                <%= link_to 'Site Owners', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                <%= link_to 'Advertisers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                <%= link_to 'Consumers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                <%= link_to 'Developers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                <%= button_to 'Log out', session_path, method: :delete, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' if authenticated? %>
+                <%= link_to 'Sign up', new_session_path, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' unless authenticated? %>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div id="mobile-menu" data-navbar-target="menu" hidden class="block sm:hidden">
-          <div class="space-y-1 px-2 pt-2 pb-3">
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white">Site Owners</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white">Advertisers</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white">Consumers</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white">Developers</a>
-          </div>
+      <div id="mobile-menu" data-navbar-target="menu" hidden class="block sm:hidden">
+        <div class="space-y-1 px-2 pt-2 pb-3">
+          <%= link_to 'Site Owners', '#', class: 'block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white' %>
+          <%= link_to 'Advertisers', '#', class: 'block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white' %>
+          <%= link_to 'Consumers', '#', class: 'block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white' %>
+          <%= link_to 'Developers', '#', class: 'block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white' %>
+          <%= button_to 'Log out', session_path, method: :delete, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' if authenticated? %>
+          <%= link_to 'Sign up', new_session_path, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' unless authenticated? %>
         </div>
-      </nav>
+      </div>
+    </nav>
+    <main class="container flex bg-[#fffffa]">
       <%= yield %>
     </main>
   </body>

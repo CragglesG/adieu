@@ -1,4 +1,3 @@
 class HomeController < ApplicationController
-  def index
-  end
+  allow_unauthenticated_access
 end
