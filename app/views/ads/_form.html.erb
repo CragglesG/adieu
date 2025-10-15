@@ -5,8 +5,23 @@
   </div>
 
   <div>
+    <%= form.label :ad_image, style: "display: block" %>
+    <%= form.file_field :ad_image, accept: "image/*" %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.rich_textarea :description %>
+  </div>
+
+  <div>
     <%= form.label :selling_price %>
     <%= form.number_field :selling_price, step: :any %>
+  </div>
+
+  <div>
+    <%= form.label :pay_per_view %>
+    <%= form.check_box :pay_per_view %>
   </div>
 
   <div>

@@ -49,6 +49,6 @@ class AdsController < ApplicationController
       end
     end
     def ad_params
-      params.expect(ad: [ :name, :selling_price ])
+      params.expect(ad: [ :name, :ad_image, :description, :selling_price, :pay_per_view ])
     end
 end
