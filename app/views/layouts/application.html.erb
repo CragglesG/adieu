@@ -44,12 +44,17 @@
             </div>
             <div class="hidden sm:ml-auto sm:block">
               <div class="flex space-x-4">
-                <%= link_to 'Site Owners', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
-                <%= link_to 'Advertisers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
-                <%= link_to 'Consumers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
-                <%= link_to 'Developers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
-                <%= button_to 'Log out', session_path, method: :delete, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' if authenticated? %>
-                <%= link_to 'Sign up', new_session_path, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' unless authenticated? %>
+                <% if authenticated? %>
+                    <%= link_to 'Ad Listings', '/ads', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                    <%= link_to 'Dashboard', '/dashboard', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                    <%= button_to 'Log out', session_path, method: :delete, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' if authenticated? %>
+                <% else %>
+                    <%= link_to 'Site Owners', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                    <%= link_to 'Advertisers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                    <%= link_to 'Consumers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                    <%= link_to 'Developers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+                    <%= link_to 'Sign up', new_session_path, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' unless authenticated? %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -58,16 +63,21 @@
 
       <div id="mobile-menu" data-navbar-target="menu" hidden class="block sm:hidden">
         <div class="space-y-1 px-2 pt-2 pb-3">
-          <%= link_to 'Site Owners', '#', class: 'block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white' %>
-          <%= link_to 'Advertisers', '#', class: 'block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white' %>
-          <%= link_to 'Consumers', '#', class: 'block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white' %>
-          <%= link_to 'Developers', '#', class: 'block rounded-md px-3 py-2 text-base font-medium dark:text-gray-300 dark:hover:text-white' %>
-          <%= button_to 'Log out', session_path, method: :delete, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' if authenticated? %>
-          <%= link_to 'Sign up', new_session_path, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' unless authenticated? %>
+          <% if authenticated? %>
+              <%= link_to 'Ad Listings', '/ads', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+              <%= link_to 'Dashboard', '/dashboard', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+              <%= button_to 'Log out', session_path, method: :delete, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' if authenticated? %>
+          <% else %>
+              <%= link_to 'Site Owners', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+              <%= link_to 'Advertisers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+              <%= link_to 'Consumers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+              <%= link_to 'Developers', '#', class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' %>
+              <%= link_to 'Sign up', new_session_path, class: 'rounded-md px-3 py-2 text-sm font-medium dark:text-gray-300 dark:hover:text-white' unless authenticated? %>
+          <% end %>
         </div>
       </div>
     </nav>
-    <main class="container flex bg-[#fffffa]">
+    <main class="container flex bg-white">
       <div><%= yield %></div>
     </main>
   </body>

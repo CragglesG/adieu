@@ -11,3 +11,16 @@
         @apply text-2xl font-semibold mt-5 mb-2;
     }
 }
+
+@theme {
+    --color-peach-yellow: #f7dba7;
+    --color-dark-moss: #345511;
+    --color-navy-blue: #090479;
+    --color-office-green: #346511;
+    --color-forest-green: #349e11;
+    --color-duke-blue: #0904a7;
+    --color-medium-blue: #0904c9;
+    --color-palatinate-blue: #0931e9;
+    --color-dutch-white: #f7e8c0;
+    --color-papaya-whip: #fff4dc;
+}

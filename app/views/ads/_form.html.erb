@@ -19,9 +19,12 @@
     <%= form.number_field :selling_price, step: :any %>
   </div>
 
-  <div>
+  <div class="flex items-center space-x-3">
     <%= form.label :pay_per_view %>
-    <%= form.check_box :pay_per_view %>
+    <label class="relative items-center">
+      <%= form.check_box :pay_per_view, class: "sr-only peer" %>
+      <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--color-palatinate-blue)]"></div>
+    </label>
   </div>
 
   <div>
