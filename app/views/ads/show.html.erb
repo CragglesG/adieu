@@ -3,7 +3,7 @@
   <%= image_tag @ad.ad_image if @ad.ad_image.attached? %>
   <%= @ad.description %>
   <p>Offering price: $<%= @ad.selling_price %> per <% if @ad.pay_per_view == false %>click<% else %>view<% end %></p>
-  <%= link_to "Back", ads_path %>
+  <%= link_to "Back", @last_page %>
   <%= link_to "Edit", edit_ad_path(@ad) %>
   <%= button_to "Delete", @ad, method: :delete, data: { turbo_confirm: "Are you sure you want to delete the ad '#{@ad.name}'? It will not be recoverable once it is deleted." } %>
 
