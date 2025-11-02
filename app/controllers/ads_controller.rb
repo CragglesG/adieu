@@ -1,6 +1,7 @@
 class AdsController < ApplicationController
   before_action :set_ad_authed, only: %i[ edit update destroy ]
-  after_action :set_previous_path
+  before_action :set_last_page
+  after_action :set_previous_path, only: %i[ index show ]
 
   def index
     @ads = Ad.all
@@ -8,12 +9,6 @@ class AdsController < ApplicationController
 
   def show
     @ad = Ad.find(params[:id])
-    logger.debug request.referer
-    if session[:previous_path] == dashboard_path then
-      @last_page = dashboard_path
-    else
-      @last_page = ads_path
-    end
   end
 
   def new
@@ -54,6 +49,9 @@ class AdsController < ApplicationController
       else
         redirect_to ads_path, alert: "You are not authorized to edit this ad."
       end
+    end
+    def set_last_page
+      @last_page = session[:previous_path]
     end
     def set_previous_path
       session[:previous_path] = request.path

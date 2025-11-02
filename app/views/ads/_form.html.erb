@@ -1,33 +1,46 @@
 <%= form_with model: ad do |form| %>
-  <div>
+  <% if form.object.errors.any? %>
+    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="error">Error: <%= form.object.errors.full_messages.first %></p>
+  <% end %>
+
+  <div class="my-5">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, placeholder: "Enter ad name", class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div>
-    <%= form.label :ad_image, style: "display: block" %>
-    <%= form.file_field :ad_image, accept: "image/*" %>
+  <div class="my-5">
+    <%= form.label :ad_image %>
+    <%= form.file_field :ad_image, accept: "image/*", class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.rich_textarea :description %>
+  <div class="my-5">
+    <%= form.label :description %>
+    <div class="overflow-x-auto">
+      <%= form.rich_textarea :description, class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+    </div>
   </div>
 
-  <div>
+  <div class="my-5">
     <%= form.label :selling_price %>
-    <%= form.number_field :selling_price, step: :any %>
+    <%= form.number_field :selling_price, step: :any, placeholder: "Enter selling price", class: "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="flex items-center space-x-3">
-    <%= form.label :pay_per_view %>
+  <div class="my-5 flex items-center space-x-3">
+    <%= form.label "Pay per click" %>
     <label class="relative items-center">
       <%= form.check_box :pay_per_view, class: "sr-only peer" %>
       <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--color-palatinate-blue)]"></div>
     </label>
+    <%= form.label :pay_per_view %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+    <div class="inline">
+      <%= form.submit class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+
+    <div class="mt-4 text-sm text-gray-500 sm:mt-0">
+      <%= link_to "Cancel", @last_page, class: "text-gray-700 underline hover:no-underline" %>
+    </div>
   </div>
 <% end %>

@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     if authenticated?
       redirect_to dashboard_path
     else
-      session[:previous_path] = home_path
+      session[:previous_path] = root_path
     end
   end
 end
